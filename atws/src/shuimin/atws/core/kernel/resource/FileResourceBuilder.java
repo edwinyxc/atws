@@ -24,6 +24,7 @@ public class FileResourceBuilder extends AbstractResourceBuilder{
 		A._assert(parent_node, "parent node null");
 		A._assert(file, "file null");
 		RegularResource r = new FileResource(file);
+		r.name(file.getName());
 		ResourceTreeNode node = new ResourceTreeNode(r.name(), r);
 		node.appendTo(parent_node);
 		return r;

@@ -15,7 +15,7 @@ public class Test
 		 */
 		Properties prop = new Properties();
 		prop.setProperty("project_name", "test");
-		prop.setProperty("MODULES_PKG_NAME", "test.dummy");
+		prop.setProperty("modules_pkg_name", "test.dummy");
 		prop.setProperty("debug_level", "debug");
 		AppContext.instance().init(prop);
 		ATWS.read("/testmod1/testResource",null);

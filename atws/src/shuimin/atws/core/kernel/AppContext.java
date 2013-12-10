@@ -3,7 +3,7 @@ package shuimin.atws.core.kernel;
 import java.util.Map;
 import java.util.Properties;
 
-import shuimin.atws.app.constant.Config;
+import shuimin.atws.Const;
 import shuimin.atws.core.kernel.resource.ResourceFactory;
 import shuimin.atws.core.kernel.resource.ResourceTree;
 import shuimin.atws.util.Paths;
@@ -19,7 +19,6 @@ import com.shuimin.base.logger.Logger;
  */
 public class AppContext
 {
-
 	public Logger logger;
 	public String ROOT_PATH;
 	public String ROOT_PKG_PATH;
@@ -60,21 +59,19 @@ public class AppContext
 	{
 		logger = Logger.getDefault();
 		logger.info("System init ....logger OK");
-		logger.info("APPCTX CLASS: "
-			+ this.getClass().getCanonicalName());
+		logger.info("APPCTX CLASS: " + this.getClass().getCanonicalName());
 		if (setting != null)
 			settings.putAll(setting);
 
 		_initLoggerLevel();
 
 		_init_resource_builders();
-		
+
 		Global.init();
 
 		ROOT_PATH = Paths.classes;
 		logger.info("Root Path: " + ROOT_PATH);
-		String r_root_pkg_path = Config.ROOT_PKG_NAME.replaceAll("\\.",
-			"/");
+		String r_root_pkg_path = Const.APP.PKG_NAME.replaceAll("\\.", "/");
 		settings.put("ROOT_PKG_PATH", r_root_pkg_path);
 
 		ROOT_PKG_PATH = ROOT_PATH + r_root_pkg_path;
@@ -97,12 +94,10 @@ public class AppContext
 		/**
 		 * load user-defined modules
 		 */
-		String modulesPkgName = settings
-			.getProperty(Config.MODULES_PKG_NAME);
+		String modulesPkgName = settings.getProperty(Const.MODULE.PROP_KEY_PKG_NAME);
 		logger.debug("modulesPkgName: " + modulesPkgName);
 		if (StrUtils.notBlank(modulesPkgName)) {
-			ResourceLoader._loadModules_default(logger,
-				modulesPkgName);
+			ResourceLoader._loadModules_default(logger, modulesPkgName);
 		}
 
 		// _loadLangBundles();
@@ -112,7 +107,7 @@ public class AppContext
 		 */
 		_initAps();
 	}
-	
+
 	private void _init_resource_builders()
 	{
 		logger.info("installing resource builders");
@@ -195,7 +190,7 @@ public class AppContext
 
 	public void setLoggerDebugLvl(int lvl)
 	{
-		logger.config("default",lvl);
+		logger.config("default", lvl);
 	}
 
 	// ------------------getter & setter-------------------------------
