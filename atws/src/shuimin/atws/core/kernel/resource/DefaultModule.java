@@ -5,6 +5,7 @@ import java.util.TreeMap;
 
 import shuimin.atws.core.kernel.AppContext;
 import shuimin.atws.core.kernel.Resources;
+import shuimin.atws.core.kernel.aop.Invocation;
 import shuimin.atws.core.kernel.module.Module;
 import shuimin.atws.core.kernel.resource.DirectoryResource;
 import shuimin.atws.core.kernel.resource.ResourceTreeNode;
@@ -18,7 +19,9 @@ public final class DefaultModule extends DirectoryResource implements Module
 	protected final Map attributes = new TreeMap();
 	protected String mountPoint;
 	protected ResourceTreeNode mountNode;// ?? not for sure
-
+	
+	private Invocation[] invos =new  Invocation[0];
+	
 	protected DefaultModule()
 	{
 	}
@@ -60,6 +63,23 @@ public final class DefaultModule extends DirectoryResource implements Module
 	public void attr(String key, Object val)
 	{
 		attributes.put(key, val);
+	}
+
+	@Override
+	public Invocation[] api()
+	{
+		return invos;
+	}
+
+	@Override
+	public Invocation api(String name)
+	{
+		for(Invocation inv : invos){
+			if(inv.name().equals(name)){
+				return inv;
+			}
+		}
+		return null;
 	}
 
 }

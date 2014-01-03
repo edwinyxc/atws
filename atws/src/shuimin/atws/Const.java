@@ -8,6 +8,9 @@ package shuimin.atws;
  */
 public final class Const
 {
+	final static public class SYS_MODULE{
+		final public static String PKG_NAME = "shuimin.atws.sys";
+	}
 	final static public class APP
 	{
 		final public static String PKG_NAME = "shuimin.atws";

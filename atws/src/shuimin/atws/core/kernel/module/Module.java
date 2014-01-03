@@ -2,6 +2,7 @@ package shuimin.atws.core.kernel.module;
 
 import java.util.Map;
 
+import shuimin.atws.core.kernel.aop.Invocation;
 import shuimin.atws.core.kernel.resource.Resource;
 import shuimin.atws.core.kernel.resource.ResourceTreeNode;
 
@@ -37,4 +38,8 @@ public interface Module extends Resource
 	// public Module dependentModule(String mid);
 
 	public void init();
+
+	public Invocation[] api();
+	
+	public Invocation api(String name);
 }

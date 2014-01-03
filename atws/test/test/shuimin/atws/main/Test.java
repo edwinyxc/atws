@@ -5,6 +5,8 @@ import java.util.Properties;
 import shuimin.atws.Const;
 import shuimin.atws.core.api.ATWS;
 import shuimin.atws.core.kernel.AppContext;
+import shuimin.atws.core.kernel.module.Module;
+import shuimin.atws.sys.auth.AuthAPI;
 
 public class Test
 {
@@ -22,11 +24,12 @@ public class Test
 		
 		System.out.println(AppContext.instance().rt().debug());
 		
-		ATWS.read("/testmod1/testResource",null);
-		ATWS.read("testmod2/testResource",null);
-		ATWS.read("testmod1/bo/BO",null);
-		final String name = (String) ATWS.module.find("testmod1").attr("name");
+		final String name = (String) ATWS.module.find("auth").attr("name");
+		Module a =  ATWS.module.find("auth").api();
+		
+		final String description = (String) ATWS.module.find("auth").attr("description");
 		System.out.println("name="+name);
+		System.out.println("description="+description);
 	}
-
 }
+

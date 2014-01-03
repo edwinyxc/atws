@@ -89,8 +89,8 @@ public class AppContext
 		/**
 		 * load sys-defined modules
 		 */
-		// _loadModules(Config.ROOT_PKG_NAME,
-		// S.arr2List(Config.SYS_PKGS));
+		String sysModulesPkgName = Const.SYS_MODULE.PKG_NAME;
+		ResourceLoader._loadModules_default(logger, sysModulesPkgName);
 		/**
 		 * load user-defined modules
 		 */
