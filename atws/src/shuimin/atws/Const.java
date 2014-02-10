@@ -23,6 +23,9 @@ public final class Const
 
 	final static public class RESOURCE
 	{
+		
+		
+		//sddsds
 //		final public static String SUFFIXES = "jsp,xhtml,tpl,xml,js,html,css,jpg,png,jpeg,gif,font,dict,db";
 	}
 
